@@ -17,7 +17,6 @@ G = zpk([],poles,1)
 end
 %}
 
-%rlocus(G)
 prompt_OS = 'What is the desired percent overshoot? ';
 OS = input(prompt_OS)
 prompt_Ts = 'What is the desired settling time (in seconds)? ';
@@ -32,4 +31,10 @@ sgrid(zeta,0)
 [K,p] = rlocfind(G)
 G_cl = feedback(K*G,1)
 step(G_cl)
+step_info = stepinfo(G_cl)
+
+%step info will show overshoot and settling time obtained
+
+
+
 
